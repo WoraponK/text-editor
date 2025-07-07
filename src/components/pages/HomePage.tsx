@@ -1,13 +1,17 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { Input } from "../ui/input";
 
-type HomeProps = {
-  children: React.ReactNode;
-};
+const FileEditor = dynamic(
+  () => import("../FileEditor").then((mod) => mod.FileEditor),
+  {
+    ssr: false,
+  }
+);
 
-const Home: React.FC<HomeProps> = ({ children }) => {
+const Home: React.FC = () => {
   const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
@@ -46,7 +50,27 @@ const Home: React.FC<HomeProps> = ({ children }) => {
         <p className="font-bold">Access Token</p>
         <Input name="accessToken" value={accessToken} onChange={handleChange} />
       </div>
-      {children}
+      <FileEditor
+        toolbar
+        initialMarkdown={`# Hello World
+This is a test file for the File Manager component.
+
+\`\`\`javascript
+console.log("Hello World");
+\`\`\`
+
+## This is a subheading
+This is some more text.
+
+| Header 1 | Header 2 | Header 3 |
+|---|---|---|
+| 4 | 5 | 6 |
+| 7 | 8 | 9 |
+
+[Google](www.google.com)
+
+![Example Image](https://www.techsmith.com/wp-content/uploads/2023/08/What-are-High-Resolution-Images.png)`}
+      />
     </div>
   );
 };
