@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@layer components {
+  .quote-style {
+    @apply pl-4 relative border-l-0;
+  }
+
+  .quote-style::after {
+    content: "";
+    @apply absolute left-0 inset-y-0 w-[6px] bg-[#c3c3c3] rounded-full;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .heading-focus::before {
+    @apply text-neutral-300 absolute left-0 opacity-100 transition-opacity duration-300;
+  }
+
+  .heading-h1.heading-focus {
+    @apply pl-[28px];
+  }
+  .heading-h1.heading-focus::before {
+    content: "#";
+  }
+
+  .heading-h2.heading-focus {
+    @apply pl-[44px];
+  }
+  .heading-h2.heading-focus::before {
+    content: "##";
+  }
+
+  .heading-h3.heading-focus {
+    @apply pl-[48px];
+  }
+  .heading-h3.heading-focus::before {
+    content: "###";
+  }
+
+  .heading-h4.heading-focus {
+    @apply pl-[52px];
+  }
+  .heading-h4.heading-focus::before {
+    content: "####";
+  }
+
+  .heading-h5.heading-focus {
+    @apply pl-[52px];
+  }
+  .heading-h5.heading-focus::before {
+    content: "#####";
+  }
+
+  .heading-h6.heading-focus {
+    @apply pl-[54px];
+  }
+  .heading-h6.heading-focus::before {
+    content: "######";
+  }
+
+  .file-editor::selection {
+    background-color: #ebebeb;
+    color: #101010;
+  }
+}
+
+.editor-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d7d7d7 transparent;
+}
+
+.editor-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.editor-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editor-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.editor-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c3c3c3;
+}
+
+/* Show pointer cursor on links only when Ctrl or Cmd is pressed */
+.ctrl-pressed a {
+  cursor: pointer;
+}
