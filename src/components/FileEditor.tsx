@@ -35,20 +35,6 @@ import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 
 import { HorizontalRuleNode } from "@lexical/react/LexicalHorizontalRuleNode";
 import FileEditorTheme from "./FileEditorTheme";
-
-// import {
-//   ToolbarPlugin,
-//   TreeViewPlugin,
-//   HeadingFocusClassPlugin,
-//   AutoAppendBlankLinePlugin,
-//   CodeActionPlugin,
-//   HeadingNavigatorPlugin,
-//   TableHoverActionsPlugin,
-//   TableCellResizerPlugin,
-//   ImagesPlugin,
-//   InlineMarkdownLinkEditPlugin,
-// } from ".";
-
 import ToolbarPlugin from "./ToolbarPlugin";
 import TreeViewPlugin from "./TreeViewPlugin";
 import HeadingFocusClassPlugin from "./HeadingFocusClassPlugin";

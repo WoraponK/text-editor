@@ -90,8 +90,3 @@
 .editor-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #c3c3c3;
 }
-
-/* Show pointer cursor on links only when Ctrl or Cmd is pressed */
-.ctrl-pressed a {
-  cursor: pointer;
-}
