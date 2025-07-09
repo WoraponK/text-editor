@@ -10,7 +10,7 @@ type Props = {
   nodeKey: string;
 };
 
-export function ImageComponent({
+export function ImageFileEditor({
   src: initialSrc,
   altText: initialAltText,
   nodeKey,

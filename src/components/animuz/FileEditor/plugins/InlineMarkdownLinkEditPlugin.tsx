@@ -10,7 +10,7 @@ import {
 } from "lexical";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $isLinkNode, $createLinkNode } from "@lexical/link";
-import { useBlockType } from "./useBlockType";
+import { useBlockType } from "../hooks/useBlockType";
 
 export default function InlineMarkdownLinkEditPlugin() {
   const [editor] = useLexicalComposerContext();

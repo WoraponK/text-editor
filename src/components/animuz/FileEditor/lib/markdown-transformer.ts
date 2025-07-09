@@ -28,7 +28,7 @@ import {
   TableRowNode,
 } from "@lexical/table";
 import { $isParagraphNode, $isTextNode, LexicalNode } from "lexical";
-import { $createImageNode, $isImageNode, ImageNode } from "./ImageNode";
+import { $createImageNode, $isImageNode, ImageNode } from "../nodes/ImageNode";
 
 export const HR: ElementTransformer = {
   dependencies: [HorizontalRuleNode],

@@ -22,7 +22,7 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
-import { useDebounce } from "./utils";
+import { useDebounce } from "../lib/utils";
 
 const BUTTON_WIDTH_PX = 18;
 

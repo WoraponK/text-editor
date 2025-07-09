@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $findMatchingParent } from "@lexical/utils";
-import {
-  $getNearestNodeFromDOMNode,
-  $getNodeByKey,
-  SELECTION_CHANGE_COMMAND,
-  $getSelection,
-} from "lexical";
+import { $getNearestNodeFromDOMNode, $getSelection } from "lexical";
 import { $isLinkNode, LinkNode } from "@lexical/link";
 import {
   Popover,

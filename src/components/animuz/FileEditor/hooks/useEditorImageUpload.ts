@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EXECUTE_API_UPLOAD_S3 } from "./utils";
+import { EXECUTE_API_UPLOAD_S3 } from "../lib/utils";
 
 type UploadResponse<T = any> = {
   data: T | null;

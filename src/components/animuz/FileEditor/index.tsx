@@ -1,6 +1,6 @@
 "use client";
 
-import "./fileEditor.css";
+import "./style.css";
 import { useState } from "react";
 import {
   LexicalComposer,
@@ -16,7 +16,7 @@ import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPl
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 
 import { $convertFromMarkdownString, TRANSFORMERS } from "@lexical/markdown";
-import { CUSTOM_TRANSFORMERS } from "./MarkdownTransformers";
+import { CUSTOM_TRANSFORMERS } from "./lib/markdown-transformer";
 
 import {
   $getRoot,
@@ -28,37 +28,42 @@ import {
 import { CodeHighlightNode, CodeNode } from "@lexical/code";
 import { LinkNode } from "@lexical/link";
 import { ListNode, ListItemNode } from "@lexical/list";
-import { ImageNode } from "./ImageNode";
+import { ImageNode } from "./nodes/ImageNode";
 import { TableNode, TableCellNode, TableRowNode } from "@lexical/table";
 import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 
 import { HorizontalRuleNode } from "@lexical/react/LexicalHorizontalRuleNode";
-import FileEditorTheme from "./FileEditorTheme";
-import ToolbarPlugin from "./ToolbarPlugin";
-import TreeViewPlugin from "./TreeViewPlugin";
-import HeadingFocusClassPlugin from "./HeadingFocusClassPlugin";
-import HeadingNavigatorPlugin from "./HeadingNavigatorPlugin";
-import AutoAppendBlankLinePlugin from "./AutoAppendBlankLinePlugin";
-import CodeActionPlugin from "./CodeActionPlugin";
-import TableHoverActionsPlugin from "./TableHoverActionsPlugin";
-import TableCellResizerPlugin from "./TableCellResizerPlugin";
-import ImagesPlugin from "./ImagesPlugin";
-import InlineMarkdownLinkEditPlugin from "./InlineMarkdownLinkEditPlugin";
+import ToolbarPlugin from "./plugins/ToolbarPlugin";
+import TreeViewPlugin from "./plugins/TreeViewPlugin";
+import HeadingFocusClassPlugin from "./plugins/HeadingFocusClassPlugin";
+import HeadingNavigatorPlugin from "./plugins/HeadingNavigatorPlugin";
+import AutoAppendBlankLinePlugin from "./plugins/AutoAppendBlankLinePlugin";
+import CodeActionPlugin from "./plugins/CodeActionPlugin";
+import TableHoverActionsPlugin from "./plugins/TableHoverActionsPlugin";
+import TableCellResizerPlugin from "./plugins/TableCellResizerPlugin";
+import ImagesPlugin from "./plugins/ImagesPlugin";
+import InlineMarkdownLinkEditPlugin from "./plugins/InlineMarkdownLinkEditPlugin";
 
-const TableActionMenuPlugin = dynamic(() => import("./TableActionMenuPlugin"), {
-  ssr: false,
-});
+const TableActionMenuPlugin = dynamic(
+  () => import("./plugins/TableActionMenuPlugin"),
+  {
+    ssr: false,
+  }
+);
 
-const HoverableLinkPlugin = dynamic(() => import("./HoverableLinkPlugin"), {
-  ssr: false,
-});
+const HoverableLinkPlugin = dynamic(
+  () => import("./plugins/HoverableLinkPlugin"),
+  {
+    ssr: false,
+  }
+);
 
 import { TablePlugin } from "@lexical/react/LexicalTablePlugin";
 import { Bookmark } from "lucide-react";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
-import { useFirstHeading } from "./useFirstHeading";
+import { useFirstHeading } from "./hooks/useFirstHeading";
 
 const onError = (error: Error) => {
   console.error(error);
@@ -107,7 +112,42 @@ export function FileEditor({
 
   const initialConfig: InitialConfigType = {
     namespace: "markdown-editor",
-    theme: FileEditorTheme,
+    theme: {
+      paragraph: "text-base",
+      quote: "quote-style",
+      text: {
+        bold: "font-bold",
+        italic: "italic",
+        underline: "underline",
+        strikethrough: "line-through",
+      },
+      heading: {
+        h1: "relative font-bold text-4xl heading-h1",
+        h2: "relative font-bold text-3xl heading-h2",
+        h3: "relative font-bold text-2xl heading-h3",
+        h4: "relative font-bold text-xl heading-h4",
+        h5: "relative font-bold text-base heading-h5",
+        h6: "relative font-bold text-sm heading-h6",
+      },
+      code: "block whitespace-pre font-mono bg-neutral-100 rounded-md p-4 leading-snug border border-neutral-200 overflow-x-auto scrollbar-thin my-6",
+      list: {
+        nested: {
+          listitem: "",
+        },
+        ol: "list-decimal pl-4 text-base",
+        ul: "list-disc pl-4 text-base",
+      },
+      link: "underline text-blue-500",
+      table:
+        "table w-full border-collapse border border-gray-300 text-left text-sm mb-6",
+      tableRow: "border-t border-gray-300",
+      tableCell: "p-2 border border-gray-300 align-top",
+      tableCellHeader: "p-2 border border-gray-300 bg-gray-100 align-top",
+      tableCellSelected: "!bg-[#ebebeb]",
+      tableCellEditing: "outline outline-2 outline-blue-400 bg-white",
+      tableCellResizer:
+        "absolute right-0 top-0 h-full w-1 cursor-col-resize bg-blue-500",
+    },
     onError,
     nodes: [
       HorizontalRuleNode,

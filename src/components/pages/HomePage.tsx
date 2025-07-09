@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { Input } from "../ui/input";
 
 const FileEditor = dynamic(
-  () => import("../FileEditor").then((mod) => mod.FileEditor),
+  () => import("@/components/animuz/FileEditor").then((mod) => mod.FileEditor),
   {
     ssr: false,
   }

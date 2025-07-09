@@ -13,7 +13,7 @@ import {
 } from "lexical";
 import { useEffect } from "react";
 
-import { $createImageNode, ImageNode, ImagePayload } from "./ImageNode";
+import { $createImageNode, ImageNode, ImagePayload } from "../nodes/ImageNode";
 
 export type InsertImagePayload = Readonly<ImagePayload>;
 

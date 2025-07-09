@@ -11,9 +11,7 @@ import type {
 import { $applyNodeReplacement, DecoratorNode } from "lexical";
 import * as React from "react";
 import { JSX } from "react";
-
-import { ImageComponent } from "./ImageNodeComponent";
-
+import { ImageFileEditor } from "../components/ImageFileEditor";
 export interface ImagePayload {
   altText: string;
   height?: number;
@@ -135,7 +133,7 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
 
   decorate(): JSX.Element {
     return (
-      <ImageComponent
+      <ImageFileEditor
         src={this.__src}
         altText={this.__altText}
         nodeKey={this.getKey()}

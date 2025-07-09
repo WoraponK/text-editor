@@ -4,8 +4,8 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { $getSelection, $isRangeSelection, isHTMLElement } from "lexical";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { CopyButton } from "./CopyButton";
-import { useBlockType } from "./useBlockType";
+import { CopyButton } from "../components/CopyButton";
+import { useBlockType } from "../hooks/useBlockType";
 
 interface Position {
   top: string;

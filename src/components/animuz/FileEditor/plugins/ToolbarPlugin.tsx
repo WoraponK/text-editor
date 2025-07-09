@@ -20,7 +20,6 @@ import {
   RotateCcwIcon,
   RotateCwIcon,
   StrikethroughIcon,
-  EllipsisVerticalIcon,
   CodeXmlIcon,
   ListIcon,
   ListOrderedIcon,
@@ -55,9 +54,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import ToolbarButton from "./ToolbarButton";
-import { formatText } from "./utils";
-import { useBlockType } from "./useBlockType";
+import ToolbarButton from "../components/ToolbarButton";
+import { formatText } from "../lib/utils";
+import { useBlockType } from "../hooks/useBlockType";
 import { HeadingTagType } from "@lexical/rich-text";
 import {
   Dialog,
@@ -78,7 +77,7 @@ import {
 } from "@lexical/table";
 import { INSERT_IMAGE_COMMAND } from "./ImagesPlugin";
 
-import { useImageUpload } from "./useEditorImageUpload";
+import { useImageUpload } from "../hooks/useEditorImageUpload";
 
 const LowPriority = 1;
 

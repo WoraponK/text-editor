@@ -7,7 +7,7 @@ import {
 } from "lexical";
 import { useState } from "react";
 import { Copy, CopyCheck } from "lucide-react";
-import { useDebounce } from "./utils";
+import { useDebounce } from "../lib/utils";
 
 interface Props {
   editor: LexicalEditor;
